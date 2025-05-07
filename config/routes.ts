@@ -42,6 +42,19 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
+	{
+		path: '/bai1',
+		name: 'Bài 1',
+		component: './bai1/index',
+		icon: 'HomeOutlined',
+	},
+	
+	{
+		path: '/bai2',
+		name: 'Bài 2',
+		component: './bai2/index',
+		icon: 'HomeOutlined',
+	},
 
 	// DANH MUC HE THONG
 	// {
