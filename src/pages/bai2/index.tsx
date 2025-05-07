@@ -74,11 +74,11 @@ const NoteApp: React.FC = () => {
     }
 
     // Lọc theo khoảng thời gian
-    const [startDate, endDate] = dateRange;
-    if (startDate && endDate) {
+    const [startDate] = dateRange;
+    if (startDate) {
       filtered = filtered.filter(note => {
-        const noteDate = moment(note.createdAt);
-        return noteDate.isAfter(startDate) && noteDate.isBefore(endDate);
+        const noteDate = moment(note.createdAt, "YYYY-MM-DD HH:mm:ss");
+        return noteDate.isSame(startDate, 'day');
       });
     }
 
@@ -295,12 +295,11 @@ const NoteApp: React.FC = () => {
             </Select>
           </Col>
           <Col xs={24} sm={12} md={8}>
-            <DatePicker.RangePicker
+            <DatePicker
               style={{ width: '100%' }}
-              value={dateRange}
-              onChange={dates => setDateRange(dates as [moment.Moment | null, moment.Moment | null])}
-              showTime
-              format="YYYY-MM-DD HH:mm:ss"
+              value={dateRange[0]}
+              onChange={date => setDateRange([date, null])}
+              format="YYYY-MM-DD"
               size="large"
             />
           </Col>
